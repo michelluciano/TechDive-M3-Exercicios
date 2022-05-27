@@ -12,4 +12,6 @@ public class Inscricao {
     private Aluno aluno;
 
     private Curso curso;
+
+    
 }

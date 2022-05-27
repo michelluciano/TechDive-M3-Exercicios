@@ -14,6 +14,10 @@ public class Aluno {
 
     private String nome;
 
+    public Aluno() {
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -25,10 +29,6 @@ public class Aluno {
     @Override
     public int hashCode() {
         return Objects.hash(matricula, nome);
-    }
-
-    public Aluno(Integer matricula) {
-        this.matricula = matricula;
     }
 
     public Aluno(Integer matricula, String nome) {
