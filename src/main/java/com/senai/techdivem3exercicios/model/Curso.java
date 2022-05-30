@@ -1,20 +1,22 @@
 package com.senai.techdivem3exercicios.model;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
-@Table(name="CURSOS")
+@Table(name = "CURSOS")
 public class Curso {
 
     @Id
+    @Column(name = "COD_CURSO")
     private String codigo;
 
     private String assunto;
 
-    private Integer duracao;
+    private Integer duracao;  // em dias
+
 
     @Override
     public boolean equals(Object o) {
@@ -29,13 +31,6 @@ public class Curso {
         return Objects.hash(codigo);
     }
 
-    public Curso(String codigo) {    }
-
-    public Curso(String codigo, String assunto, Integer duracao) {
-        this.codigo = codigo;
-        this.assunto = assunto;
-        this.duracao = duracao;
-    }
 
     public String getCodigo() {
         return codigo;

@@ -1,24 +1,32 @@
 package com.senai.techdivem3exercicios.dto;
 
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-public class InscricaoReqDTO implements Serializable {
+public class InscricaoRespDTO implements Serializable {
 
-    @NotNull(message = "Campo obrigatório: matricula")
+    private Integer id;
+
     private Integer matriculaAluno;
 
-    @NotNull(message = "Campo obrigatório: codigo")
     private String codigoCurso;
 
 
-    public InscricaoReqDTO() { }
+    public InscricaoRespDTO() { }
 
-    public InscricaoReqDTO(Integer matriculaAluno, String codigoCurso) {
+    public InscricaoRespDTO(Integer id, Integer matriculaAluno, String codigoCurso) {
+        this.id = id;
         this.matriculaAluno = matriculaAluno;
         this.codigoCurso = codigoCurso;
     }
 
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getMatriculaAluno() {
         return matriculaAluno;
