@@ -2,7 +2,7 @@ package com.senai.techdivem3exercicios.service;
 
 import com.senai.techdivem3exercicios.dao.AlunosDAO;
 import com.senai.techdivem3exercicios.exception.RegistroExistenteException;
-import com.senai.techdivem3exercicios.exception.RegistroNaoExistenteException;
+import com.senai.techdivem3exercicios.exception.RegistroNaoEncontradoException;
 import com.senai.techdivem3exercicios.model.Aluno;
 
 import javax.inject.Inject;
@@ -25,14 +25,14 @@ public class AlunosService {
     public void alterar(Aluno aluno) {
         boolean existente = alunosDAO.find(aluno.getMatricula()).isPresent();
         if (!existente)
-            throw new RegistroNaoExistenteException("Aluno", aluno.getMatricula().toString());
+            throw new RegistroNaoEncontradoException("Aluno", aluno.getMatricula().toString());
         alunosDAO.update(aluno);
     }
 
     public void excluir(Integer matricula) {
         boolean existente = alunosDAO.find(matricula).isPresent();
         if (!existente)
-            throw new RegistroNaoExistenteException("Aluno", matricula.toString());
+            throw new RegistroNaoEncontradoException("Aluno", matricula.toString());
         alunosDAO.delete(matricula);
     }
 
@@ -45,7 +45,7 @@ public class AlunosService {
 
     public Aluno obter(Integer matricula) {
         Optional<Aluno> alunoOpt = alunosDAO.find(matricula);
-        return alunoOpt.orElseThrow(() -> new RegistroNaoExistenteException("Aluno", matricula.toString()));
+        return alunoOpt.orElseThrow(() -> new RegistroNaoEncontradoException("Aluno", matricula.toString()));
     }
 
 }
